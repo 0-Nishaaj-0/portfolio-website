@@ -1,0 +1,11 @@
+const skills = [
+  ['☕','Java','LANGUAGE'],['♯','C#','LANGUAGE'],['🐍','Python','LANGUAGE'],['JS','JavaScript','LANGUAGE'],['TS','TypeScript','LANGUAGE'],['⌘','SQL','LANGUAGE'],['{}','Ruby','LANGUAGE'],['</>','HTML/CSS','LANGUAGE'],['>_','Bash','LANGUAGE'],
+  ['⚙','Spring Boot','FRAMEWORK'],['◈','.NET','FRAMEWORK'],['⚛','React','FRAMEWORK'],['⬡','Node.js','FRAMEWORK'],['▦','WPF/XAML','UI FRAMEWORK'],['◧','Angular','FRAMEWORK'],['◉','Rails','FRAMEWORK'],['▤','FastAPI','FRAMEWORK'],['▥','Selenium','AUTOMATION'],
+  ['▰','PostgreSQL','DATABASE'],['▧','MySQL','DATABASE'],['☁','AWS','CLOUD'],['☁','Azure','CLOUD'],['▣','Docker','DEVOPS'],['◆','Git','VERSION CONTROL'],['⌥','GitHub','VERSION CONTROL'],['🔧','PowerShell','SCRIPTING'],['◫','Postman','API TOOL'],
+  ['◉','JUnit','TESTING'],['◈','Mockito','TESTING'],['📊','Pandas','DATA'],['∑','NumPy','DATA'],['✧','scikit-learn','ML'],['⚙','Power Automate','AUTOMATION'],['▣','SharePoint','PLATFORM'],['⇄','REST APIs','BACKEND'],['◇','GitHub Actions','CI/CD']
+];
+const grid = document.querySelector('#inventory-grid');
+const detail = document.querySelector('#skill-detail');
+skills.forEach(([icon,name,type])=>{const button=document.createElement('button');button.className='inventory-slot';button.type='button';button.setAttribute('aria-label',`${name}: ${type}`);button.innerHTML=`<span class="slot-icon"></span><span class="slot-label"></span>`;button.querySelector('.slot-icon').textContent=icon;button.querySelector('.slot-label').textContent=name;button.addEventListener('mouseenter',()=>detail.textContent=`${name.toUpperCase()} · ${type}`);button.addEventListener('focus',()=>detail.textContent=`${name.toUpperCase()} · ${type}`);button.addEventListener('click',()=>detail.textContent=`${name.toUpperCase()} · ${type}`);grid.appendChild(button)});
+document.querySelector('#year').textContent=new Date().getFullYear();
+const menu=document.querySelector('.menu-toggle');const nav=document.querySelector('.nav');menu.addEventListener('click',()=>{const isOpen=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(isOpen))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
